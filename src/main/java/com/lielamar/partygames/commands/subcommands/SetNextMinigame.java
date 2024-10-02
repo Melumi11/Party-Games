@@ -1,7 +1,7 @@
 package com.lielamar.partygames.commands.subcommands;
 
 import com.lielamar.lielsutils.commands.Command;
-import com.lielamar.partygames.PartyGames;
+import com.lielamar.partygames.Main;
 import com.lielamar.partygames.game.GameState;
 import com.lielamar.partygames.game.GameType;
 import org.bukkit.ChatColor;
@@ -9,9 +9,9 @@ import org.bukkit.command.CommandSender;
 
 public class SetNextMinigame extends Command {
 
-    private PartyGames main;
+    private Main main;
 
-    public SetNextMinigame(PartyGames main, String name) {
+    public SetNextMinigame(Main main, String name) {
         super(name);
 
         this.main = main;
@@ -56,7 +56,8 @@ public class SetNextMinigame extends Command {
 
         String nextMinigameName = fixName(args[0]);
         try {
-            main.getGame().getMinigames()[main.getGame().getCurrentGameId()] = GameType.valueOf(nextMinigameName);
+            GameType gameType = GameType.valueOf(nextMinigameName);
+            main.getGame().getMinigames()[main.getGame().getCurrentGameId()] = gameType;
             cs.sendMessage(ChatColor.GRAY + nextMinigameName + ChatColor.GREEN + " will be the next minigame!");
         } catch(IllegalArgumentException e) {
             cs.sendMessage(ChatColor.GRAY + nextMinigameName + ChatColor.RED + " is not a valid minigame!");

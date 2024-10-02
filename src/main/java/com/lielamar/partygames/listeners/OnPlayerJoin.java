@@ -1,6 +1,6 @@
 package com.lielamar.partygames.listeners;
 
-import com.lielamar.partygames.PartyGames;
+import com.lielamar.partygames.Main;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.entity.Player;
@@ -12,8 +12,8 @@ import org.bukkit.event.player.PlayerLoginEvent;
 
 public class OnPlayerJoin implements Listener {
 
-    private PartyGames main;
-    public OnPlayerJoin(PartyGames main) {
+    private Main main;
+    public OnPlayerJoin(Main main) {
         this.main = main;
     }
 

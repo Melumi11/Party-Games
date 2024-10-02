@@ -2,18 +2,19 @@ package com.lielamar.partygames.events;
 
 import com.lielamar.partygames.game.Game;
 import com.lielamar.partygames.modules.CustomPlayer;
-import org.bukkit.event.Cancellable;
+import org.bukkit.event.Event;
 import org.bukkit.event.HandlerList;
 
-public class GameEndEvent extends PartyGamesEvent implements Cancellable {
+public class GameEndEvent extends Event {
 
+    private Game game;
     private CustomPlayer first, second, third;
     private CustomPlayer[] players;
     private static final HandlerList HANDLERS_LIST = new HandlerList();
     private boolean cancelled;
 
     public GameEndEvent(Game game, CustomPlayer first, CustomPlayer second, CustomPlayer third, CustomPlayer[] players){
-        super(game);
+        this.game = game;
         this.first = first;
         this.second = second;
         this.third = third;
@@ -37,6 +38,8 @@ public class GameEndEvent extends PartyGamesEvent implements Cancellable {
     public static HandlerList getHandlerList() {
         return HANDLERS_LIST;
     }
+
+    public Game getGame() { return this.game; }
 
     public CustomPlayer getFirst() {
         return this.first;
